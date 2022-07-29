@@ -285,7 +285,7 @@ def figureFreqs(sample, bins, range, base):
     histRelCumFreq.set_xlim([x.min(), x.max()])
     histRelCumFreq.plot(polPoints, cumFreq/len(sample))# polygon
     # plt.show()
-#Probabilites // kef3----------
+#Probabilites // chapter3----------
 def P(value, n):
     p = value/n
     return p
@@ -303,7 +303,7 @@ def Pind(p1,p2):
     return pind
 def isIndependent(p1, p2,p1inter2):
     return p1inter2 == p1* p2
-#Probabilites // kef4----------
+#Probabilites // chapter4----------
 def fact(n):  
     return 1 if (n==1 or n==0) else n * fact(n - 1); 
 def possCombs(n,r): #page 67
