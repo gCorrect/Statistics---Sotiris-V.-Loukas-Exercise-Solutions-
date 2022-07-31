@@ -3,24 +3,21 @@ import numpy as np
 from scipy import stats
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), '../..', 'libraries'))
-from functions import *  
- 
-
-sample = [10,15,8,17,22,12,5,3,32,14,2,48,
-          24,18,5,9,16,14,28,2,7,8,11,43,
-          16,4,27,34,43,15,22,6,18,25,7,39,
-          13,18,11,24,1,4,20,1,6,3,16,33,
-          27,8,2,3,49,5,17,26,0,4,23,28]
-
+from functions import *
+# info
+sample = [4.2,4.4,4.4,4.3,4.2,4.4,4.8,4.9,4.4,4.2,3.8,4.2,4.4,
+               4.3,4.5,4.8,4.7,4.2,4.2,4.8,4.5,3.6,4.1,4.3,3.9,4.2,
+               4.0,4.5,4.4,4.1,4.0,4.0,3.8,4.6,4.9,3.8,4.3,4.3,3.9,
+               3.9,4.0,4.2,4.3,4.7,4.1,4.0,4.6,4.4,4.6,4.4,4.9,4.4]
 n = len(sample)
 sample.sort()
-bins=10
-srange=(-0.5,49.5)
+srange=(3.55,4.95)
 #answers (i)
 k=k(n) #count of bins k
 R=R(sample,n)
-d=5
+d=d(R,k)
 printStatsInfo(sample,n,k,R,d)
+bins=7
 
 freqOfValues, relFreqOfValues, cumFreqOfValues, relCumFreqOfValues, mean, variance, std, CV= freqOfValues(sample,n)
 freqOfBins,edges, xi, varBins = freqOfBins(sample, n, bins, srange)
@@ -34,13 +31,11 @@ medianNp=np.median(sample) #3
 medianBins(sample,n,d,bins,srange)
 modeStats=stats.mode(sample) #4
 stdNp=np.std(sample) # wasn't asked
-relFreqOfRange = relFreqOfRange(sample, 10,21)
+relFreqOfRange = relFreqOfRange(sample, 4.3,4.5)
 #answers (ii) 
 # cv = lambda sample: np.std(sample, ddof=1) / np.mean(sample) * 100
 CV =  std / mean * 100
-lessThan(sample, 10)
-moreThan(sample,29)
 # --------------------------------------------
 printValues(cumFreqStats, lowLimit, binSize, extraPoints,
                  meanNp, varStats, medianNp, modeStats, stdNp, CV)
-figureFreqs(sample, bins, srange, base=5)
+figureFreqs(sample, bins, srange, base=.2)

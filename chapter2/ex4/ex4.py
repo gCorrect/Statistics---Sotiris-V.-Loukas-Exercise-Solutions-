@@ -6,20 +6,21 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../..', 'libraries'))
 from functions import *  
  
 
-sample = [10,15,8,17,22,12,5,3,32,14,2,48,
-          24,18,5,9,16,14,28,2,7,8,11,43,
-          16,4,27,34,43,15,22,6,18,25,7,39,
-          13,18,11,24,1,4,20,1,6,3,16,33,
-          27,8,2,3,49,5,17,26,0,4,23,28]
+sample = [239,212,249,227,218,310,281,330,226,233,
+          223,161,195,233,249,284,284,174,170,256,
+          169,299,210,301,199,258,258,195,227,244,
+          355,234,195,196,354,282,282,286,286,176,
+          195,163,297,211,228,309,309,225,223,195,
+          248,284,173,256,169,209,209,200,258,284]
 
 n = len(sample)
 sample.sort()
-bins=10
-srange=(-0.5,49.5)
+bins=8
+srange=(160.5,360.5)
 #answers (i)
 k=k(n) #count of bins k
 R=R(sample,n)
-d=5
+d=25
 printStatsInfo(sample,n,k,R,d)
 
 freqOfValues, relFreqOfValues, cumFreqOfValues, relCumFreqOfValues, mean, variance, std, CV= freqOfValues(sample,n)
@@ -34,13 +35,11 @@ medianNp=np.median(sample) #3
 medianBins(sample,n,d,bins,srange)
 modeStats=stats.mode(sample) #4
 stdNp=np.std(sample) # wasn't asked
-relFreqOfRange = relFreqOfRange(sample, 10,21)
+relFreqOfRange = relFreqOfRange(sample, 261,310)
 #answers (ii) 
 # cv = lambda sample: np.std(sample, ddof=1) / np.mean(sample) * 100
 CV =  std / mean * 100
-lessThan(sample, 10)
-moreThan(sample,29)
 # --------------------------------------------
 printValues(cumFreqStats, lowLimit, binSize, extraPoints,
                  meanNp, varStats, medianNp, modeStats, stdNp, CV)
-figureFreqs(sample, bins, srange, base=5)
+figureFreqs(sample, bins, srange, base=20)
