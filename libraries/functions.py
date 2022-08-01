@@ -4,7 +4,7 @@ from statistics import variance
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from scipy import stats
-
+# chapter2 // Descrictive Statistics-------------
 def k(n):
     k= 1+(3.322*math.log(n,10))
     print("k=", k)
@@ -285,7 +285,7 @@ def figureFreqs(sample, bins, range, base):
     histRelCumFreq.set_xlim([x.min(), x.max()])
     histRelCumFreq.plot(polPoints, cumFreq/len(sample))# polygon
     plt.show()
-#Probabilites // chapter3----------
+# chapter3 // Elementary Probabilites Theory----------
 def P(value, n): # Probability Simple
     p = value/n
     return p
@@ -303,7 +303,7 @@ def Pind(p1,p2): # Probablity of 2 independent sets
     return pind
 def isIndependent(p1, p2,p1inter2):
     return p1inter2 == p1 * p2
-#Probabilites // chapter4----------
+# chapter4 // Random Variables - Probability Distributions----------
 def fact(n):  # factorial
     return 1 if (n==1 or n==0) else n * fact(n - 1); 
 def Pcomb(n,r): # Combinatorial Probablity - (3.7), page 67
@@ -312,10 +312,10 @@ def Pbinomial(n, x, p, q):
     return Pcomb(n,x) * pow(p,x) * pow(q,n-x) 
 def Ppoisson (x, l):
     return ( math.exp(-l) * pow(l,x) )/ fact(x)
-# kef5--------------------------
-def std_m(std, n):
+# chapter5 // Sampling Distibutions--------------------------
+def std_m(std, n): # Standard deviation of mean value
     return std/math.sqrt(n) 
-# kef6--------------------------
+# chapter6 // Statistical conclusion validity--------------------------
 def confidenceInterval(q, df, mean, std):
     # q=1-a/2 
     std_mean = std_m(std, df+1)
