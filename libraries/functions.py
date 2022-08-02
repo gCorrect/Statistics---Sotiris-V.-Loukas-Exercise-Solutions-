@@ -285,7 +285,7 @@ def figureFreqs(sample, bins, range, base):
     histRelCumFreq.set_xlim([x.min(), x.max()])
     histRelCumFreq.plot(polPoints, cumFreq/len(sample))# polygon
     plt.show()
-# chapter3 // Elementary Probabilites Theory----------
+# chapter3 // Elementary Probability Theory----------
 def P(value, n): # Probability Simple
     p = value/n
     return p
@@ -295,7 +295,7 @@ def Pinter(p1,p2):  # Probability Intersection
 def Pun(p1, p2, p1inter2): # Probablity Union
     pun= p1 + p2 - p1inter2
     return pun
-def Pcond(p1,p2): # Prababiliyt Conditional 
+def Pcond(p1,p2): # Probability Conditional 
     pcond = p1/p2
     return pcond
 def Pind(p1,p2): # Probablity of 2 independent sets
