@@ -317,10 +317,9 @@ def std_m(std, n): # Standard deviation of mean value
     return std/math.sqrt(n) 
 # chapter6 // Statistical conclusion validity--------------------------
 def confidenceInterval(q, df, mean, std):
-    # q=1-a/2 
     std_mean = std_m(std, df+1)
     t_a2_df = stats.t.ppf(q=(1-q)/2+q,df=df)
-    print("t_a2_df= ", t_a2_df) #<<<--------------
+    # print("t_a2_df= ", t_a2_df) 
     l = mean - t_a2_df * std_mean
     u = mean + t_a2_df * std_mean
     confidenceLevel = [l,u]
@@ -328,7 +327,7 @@ def confidenceInterval(q, df, mean, std):
 def confidenceIntervalNorm(q, df, mean, std):
     std_mean = std_m(std,df+1)
     z_a2_df = stats.norm.ppf(q=(1-q)/2+q)
-    print("z_a2_df= ", z_a2_df) #<<<--------------
+    # print("z_a2_df= ", z_a2_df) 
     l = mean - z_a2_df * std_mean
     u = mean + z_a2_df * std_mean
     confidenceLevel = [l,u]
