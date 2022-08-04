@@ -13,7 +13,7 @@ print("sum",sum(data))
 
 freqs, relFreq, cumFreqs, relCumFreq, mean, variance, std, CV = freqOfValues(data,n)
 # (i)
-print("(i)")
+print("\n(i)")
 print("Std= ",std)
 print("meanx = ",mean," Var= ", variance )
 

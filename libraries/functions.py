@@ -314,8 +314,18 @@ def Ppoisson (x, l):
     return ( math.exp(-l) * pow(l,x) )/ fact(x)
 # chapter5 // Sampling Distibutions--------------------------
 def std_m(std, n): # Standard deviation of mean value
-    return std/math.sqrt(n) 
+    std_m = std/math.sqrt(n)
+    # print("std_m= ",std_m)
+    return std_m
 # chapter6 // Statistical conclusion validity--------------------------
+def print_stat_values(mean,variance,std,n,sem):
+    print("\nstatistical values :")
+    print("meax = ",mean) 
+    print("var= ", variance)
+    print("std= ",std)
+    print("n= ", n)  
+    print("sem = ", sem)
+    print("var_m= ", sem * sem )
 def confidenceInterval(q, df, mean, std):
     std_mean = std_m(std, df+1)
     t_a2_df = stats.t.ppf(q=(1-q)/2+q,df=df)
@@ -334,8 +344,27 @@ def confidenceIntervalNorm(q, df, mean, std):
     print("Confidence Interval (normal) of ",q," = ", confidenceLevel)
 def t(mean, m0, std, n):
     t = ( mean-m0 ) / ( std / math.sqrt(n) )
-    print("t= ", t)
+    print("t=", t)
     return ( mean-m0 ) / ( std / math.sqrt(n) )
+def hypothesis( a, mean, m0, std,  n):
+    t_value = t(mean, m0, std, n)
+
+    if ( mean-m0 > 0 ):
+        t_crit = stats.t.ppf( (1-a), n-1 ) 
+        print("t_crit=", t_crit)
+
+        if t_value < t_crit :
+            print("H0 is approved")
+        else:
+            print("Ha is approved")
+    else:
+        t_crit = stats.t.ppf( (a), n-1 ) 
+        print("t_crit=", t_crit)
+
+        if t_value > t_crit :
+            print("H0 is approved")
+        else:
+            print("Ha is approved")
 def Sp(S1 , n1, S2, n2 ):
     S_var_p = ( (n1-1)* pow(S1,2) + (n2-1)* pow(S2,2) ) / (n1+n2-2)
     print("S^2p = ", S_var_p)
