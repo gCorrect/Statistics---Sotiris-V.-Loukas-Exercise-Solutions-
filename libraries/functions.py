@@ -130,10 +130,10 @@ def meanSimple(sample,n):
     for value in sample:
         sum= sum + value
     meanSimple= sum/n
-    print("\nMeanSimple: ")
-    print("---------------------------------------")
-    print("---------------------------------------")
-    print("\nmeanSimple=",meanSimple)
+    # print("\nMeanSimple: ")
+    # print("---------------------------------------")
+    # print("---------------------------------------")
+    # print("\nmeanSimple=",meanSimple)
     return meanSimple
 def medianBins(sample,n, d, bins, srange):
     cumFreq, lowLimit, binSize, extraPoints = stats.cumfreq(sample, numbins = bins, defaultreallimits= srange)
@@ -332,26 +332,28 @@ def confidenceInterval(q, df, mean, std):
     # print("t_a2_df= ", t_a2_df) 
     l = mean - t_a2_df * std_mean
     u = mean + t_a2_df * std_mean
-    confidenceLevel = [l,u]
+    confidenceLevel = np.array([l,u])
+    np.set_printoptions(precision=3)
     print("Confidence Interval (t) of ", q," = ", confidenceLevel)
 def confidenceIntervalNorm(q, df, mean, std):
     std_mean = std_m(std,df+1)
     z_a2_df = stats.norm.ppf(q=(1-q)/2+q)
-    # print("z_a2_df= ", z_a2_df) 
+    print("z_a2_df=%.3f " % z_a2_df) 
     l = mean - z_a2_df * std_mean
     u = mean + z_a2_df * std_mean
-    confidenceLevel = [l,u]
+    confidenceLevel = np.array([l,u])
+    np.set_printoptions(precision=3)
     print("Confidence Interval (normal) of ",q," = ", confidenceLevel)
 def t(mean, m0, std, n):
     t = ( mean-m0 ) / ( std / math.sqrt(n) )
-    print("t=", t)
+    print("t=%.3f" % t)
     return ( mean-m0 ) / ( std / math.sqrt(n) )
 def hypothesis( a, mean, m0, std,  n):
     t_value = t(mean, m0, std, n)
 
     if ( mean-m0 > 0 ):
         t_crit = stats.t.ppf( (1-a), n-1 ) 
-        print("t_crit=", t_crit)
+        print("t_crit=%.3f" % t_crit)
 
         if t_value < t_crit :
             print("H0 is approved")
@@ -359,12 +361,32 @@ def hypothesis( a, mean, m0, std,  n):
             print("Ha is approved")
     else:
         t_crit = stats.t.ppf( (a), n-1 ) 
-        print("t_crit=", t_crit)
+        print("t_crit=%.3f" % t_crit)
 
         if t_value > t_crit :
             print("H0 is approved")
         else:
             print("Ha is approved")
+def hypothesis_norm( a, mean, m0, std,  n):
+    z_value = t(mean, m0, std, n)
+
+    if ( mean-m0 > 0 ):
+        z_crit = stats.norm.ppf( (1-a) ) 
+        print("z_crit=%.3f" % (z_crit))
+
+        if z_value < z_crit :
+            print("H0 is approved")
+        else:
+            print("Ha is approved")
+    else:
+        z_crit = stats.t.ppf( (a), n-1 ) 
+        print("z_crit=%.3f" % (z_crit))
+
+        if z_value > z_crit :
+            print("H0 is approved")
+        else:
+            print("Ha is approved")
+
 def Sp(S1 , n1, S2, n2 ):
     S_var_p = ( (n1-1)* pow(S1,2) + (n2-1)* pow(S2,2) ) / (n1+n2-2)
     print("S^2p = ", S_var_p)

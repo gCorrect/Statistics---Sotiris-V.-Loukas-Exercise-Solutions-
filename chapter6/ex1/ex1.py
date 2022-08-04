@@ -14,11 +14,11 @@ m0= 65
 # --------------------------------
 sem=std_m(std,n)
 print_stat_values(mean,std*std,std,n,sem)
-#(i)
+  #(i)
 print("\n(i)")
 confidenceInterval( q, n-1, mean, std)
 interval = stats.t.interval(q, n-1, mean, sem)
 print("Confidence Interval (t) of", q*100,"% with stats.t.interval() : ", interval)
-#(ii)
+  #(ii)
 print("\n(ii)")
 hypothesis(a,mean,m0,std,n)
