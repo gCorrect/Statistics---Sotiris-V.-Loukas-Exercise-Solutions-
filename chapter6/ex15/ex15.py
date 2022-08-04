@@ -1,8 +1,8 @@
 import numpy as np
 import scipy.stats as stats 
-import sys
-sys.path.append(r'C:\Users\nanas\Desktop\Nikos\TEI\mathimata\xrwstoumena\xeimerina\YpolNohm_2021_22\Eggrafa_709\books\stats_Loukas\exercises\functions')
-from functions import *
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../..', 'libraries'))
+from functions import *  
 # data----------------------------
 n1= 30
 mean1= 18
